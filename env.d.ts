@@ -1,5 +1,5 @@
 declare module "bun" {
-  interface Env {
-    NAME: string;
-  }
+	interface Env {
+		NAME: string;
+	}
 }
