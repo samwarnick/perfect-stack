@@ -1,25 +1,25 @@
-import { zValidator } from "@hono/zod-validator";
-import { Hono } from "hono";
-import { serveStatic } from "hono/bun";
-import { logger } from "hono/logger";
-import { Hello } from "./components/hello";
-import { db } from "./db/db";
-import { insertMessageSchema, messages } from "./db/schema";
-import { Layout } from "./layout";
+import { zValidator } from '@hono/zod-validator';
+import { Hono } from 'hono';
+import { serveStatic } from 'hono/bun';
+import { logger } from 'hono/logger';
+import { Hello } from './components/hello';
+import { db } from './db/db';
+import { insertMessageSchema, messages } from './db/schema';
+import { Layout } from './layout';
 
 const app = new Hono();
 
 app.use(logger());
 
 app.use(
-	"/assets/*",
+	'/assets/*',
 	serveStatic({
-		root: "./",
-		rewriteRequestPath: (path) => path.replace(/^\/assets/, "/src/assets"),
+		root: './',
+		rewriteRequestPath: (path) => path.replace(/^\/assets/, '/src/assets'),
 	}),
 );
 
-app.get("/", async (c) => {
+app.get('/', async (c) => {
 	const allMessages = await db.select().from(messages);
 	return c.html(
 		<Layout>
@@ -43,8 +43,8 @@ app.get("/", async (c) => {
 	);
 });
 
-app.post("/", zValidator("form", insertMessageSchema), async (c) => {
-	const newMessage = c.req.valid("form");
+app.post('/', zValidator('form', insertMessageSchema), async (c) => {
+	const newMessage = c.req.valid('form');
 	await db.insert(messages).values({ message: newMessage.message });
 	return c.html(<li>{newMessage.message}</li>);
 });
