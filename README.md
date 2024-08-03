@@ -1,3 +1,7 @@
+```sh
+bun create samwarnick/perfect-stack project-name
+```
+
 To install dependencies:
 
 ```sh
