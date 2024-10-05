@@ -10,6 +10,7 @@ do
         then
                 echo "Ref $ref received. Deploying ${BRANCH} branch on server..."
                 git --work-tree="$WORKING_DIR" --git-dir="$WORKING_DIR/.git" checkout -f $BRANCH
+                bun prod-setup
                 sudo systemctl restart $PROJECT_NAME
         else
                 echo "Ref $ref received. Doing nothing: only the $BRANCH branch may be deployed on this server."

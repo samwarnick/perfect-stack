@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=$BUN run $WORKING_DIR/src/index.tsx
+ExecStart=$BUN prod
 Restart=always
 RestartSec=5
 User=$USER
