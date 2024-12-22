@@ -11,7 +11,9 @@ bun install
 To setup database:
 
 ```sh
-bun db:setup
+bun db:generate
+bun db:migrate
+bun db:seed
 ```
 
 To run:
