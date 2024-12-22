@@ -1,0 +1,6 @@
+/node_modules
+.env
+.idea
+.github
+README.md
+sqlite.db
