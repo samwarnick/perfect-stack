@@ -4,9 +4,9 @@
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleResolution": "Node",
+		"skipLibCheck": true,
 		"strict": true,
-		"jsx": "react-jsx",
-		"jsxImportSource": "hono/jsx",
+		"strictNullChecks": true,
 		"types": ["bun-types"]
 	}
 }

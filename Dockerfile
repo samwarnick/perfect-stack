@@ -1,13 +1,16 @@
-FROM oven/bun:1 AS base
+FROM oven/bun:1.1.2-alpine AS base
 WORKDIR /usr/src/app
 
-COPY . .
+COPY bun.lock .
+COPY package.json .
+COPY tsconfig.json .
 
 RUN bun install --frozen-lockfile --production
 
-ENV NODE_ENV=production
+COPY src ./src
+RUN mkdir -p ./db
+ENV ENV=production
 
-USER bun
 EXPOSE 3000/tcp
 ENTRYPOINT [ "bun", "prod" ]
 
